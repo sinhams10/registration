@@ -60,7 +60,7 @@
                         data-field="Full Name"
                     >
                     <div class="error-message">Please enter a valid name (letters and spaces only)</div>
-                    <div class="success-message">Name looks good!</div>
+                    <div class="success-message">✓</div>
                 </div>
 
                 <div class="form-group">
@@ -78,7 +78,7 @@
                         data-field="Email"
                     >
                     <div class="error-message">Please enter a valid email address</div>
-                    <div class="success-message">Email is valid!</div>
+                    <div class="success-message">✓</div>
                 </div>
 
                 <div class="form-group">
@@ -106,7 +106,7 @@
                         <option value="Other">Other</option>
                     </select>
                     <div class="error-message">Please select your class/grade</div>
-                    <div class="success-message">Grade selected!</div>
+                    <div class="success-message">✓</div>
                 </div>
 
                 <div class="form-group">
@@ -118,15 +118,15 @@
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder="+91 98765 43210"
+                        placeholder="9876543210"
                         required
-                        pattern="[0-9\s\+\-\(\)\.]+"
+                        pattern="[0-9]{10}"
                         minlength="10"
-                        maxlength="20"
+                        maxlength="10"
                         data-field="Phone Number"
                     >
-                    <div class="error-message">Please enter a valid phone number (10+ digits)</div>
-                    <div class="success-message">Phone number is valid!</div>
+                    <div class="error-message">Please enter a valid 10-digit phone number</div>
+                    <div class="success-message">✓</div>
                 </div>
 
                 <button type="submit">Register for Early Access</button>
@@ -173,10 +173,10 @@
                 isValid = emailRegex.test(field.value);
                 errorMessage = 'Please enter a valid email address';
             } else if (field.type === 'tel') {
-                // Phone validation (at least 10 digits)
+                // Phone validation (exactly 10 digits)
                 const phoneDigits = field.value.replace(/\D/g, '');
-                isValid = phoneDigits.length >= 10;
-                errorMessage = 'Please enter a valid phone number (10+ digits)';
+                isValid = phoneDigits.length === 10;
+                errorMessage = 'Please enter a valid 10-digit phone number';
             } else if (field.id === 'fullName') {
                 // Name validation
                 const nameRegex = /^[A-Za-z\s]+$/;
