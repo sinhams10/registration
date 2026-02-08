@@ -1,0 +1,59 @@
+# .gitignore - Files to exclude from version control
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.project
+.buildpath
+.settings/
+.env.local
+.env.*.local
+
+# Node modules (if you add any build process)
+node_modules/
+package-lock.json
+yarn.lock
+dist/
+build/
+
+# Netlify specific
+.netlify
+.netlify/cache/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Env files (if you add authentication)
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Temporary files
+*.tmp
+*.bak
+*.orig

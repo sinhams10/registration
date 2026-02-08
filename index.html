@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robotics & Science Labs - A hands-on learning space exploring robotics, electronics, and practical science through guided workshops and structured programs.">
+    <meta name="keywords" content="robotics, science, labs, workshops, STEM, education">
+    <title>Robotics & Science Labs - Early Access Registration</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* Page-specific form validation styles */
+    </style>
+</head>
+<body>
+    <!-- Floating science nodes -->
+    <div class="science-nodes">
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+    </div>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-icon">🤖</div>
+        </div>
+        <h1>Robotics & Science Labs</h1>
+        <span class="coming-soon">Coming Soon</span>
+        <p class="description">
+            A hands-on learning space where students explore robotics, electronics, and practical science through guided workshops and structured programs.
+        </p>
+    </header>
+
+    <main class="container">
+        <div class="form-card">
+            <h2 class="form-title">Early Access Registration</h2>
+            <p class="form-subtitle">Be among the first to join our upcoming workshops</p>
+
+            <form name="robotics-labs-registration" method="POST" netlify netlify-honeypot="bot-field" action="/thank-you.html">
+                <!-- Honeypot for bot prevention -->
+                <input type="hidden" name="bot-field" />
+                <input type="hidden" name="form-name" value="robotics-labs-registration" />
+                <input type="hidden" name="_next" value="/thank-you.html" />
+
+                <div class="form-group">
+                    <label for="fullName">
+                        Full Name
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your name"
+                        required
+                        minlength="2"
+                        maxlength="50"
+                        pattern="[A-Za-z\s]+"
+                        data-field="Full Name"
+                    >
+                    <div class="error-message">Please enter a valid name (letters and spaces only)</div>
+                    <div class="success-message">Name looks good!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Email Address
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                        maxlength="100"
+                        data-field="Email"
+                    >
+                    <div class="error-message">Please enter a valid email address</div>
+                    <div class="success-message">Email is valid!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="grade">
+                        Class/Grade
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <select id="grade" name="grade" required data-field="Class/Grade">
+                        <option value="">Select your class/grade</option>
+                        <option value="Grade 1">Grade 1</option>
+                        <option value="Grade 2">Grade 2</option>
+                        <option value="Grade 3">Grade 3</option>
+                        <option value="Grade 4">Grade 4</option>
+                        <option value="Grade 5">Grade 5</option>
+                        <option value="Grade 6">Grade 6</option>
+                        <option value="Grade 7">Grade 7</option>
+                        <option value="Grade 8">Grade 8</option>
+                        <option value="Grade 9">Grade 9</option>
+                        <option value="Grade 10">Grade 10</option>
+                        <option value="Grade 11">Grade 11</option>
+                        <option value="Grade 12">Grade 12</option>
+                        <option value="College">College</option>
+                        <option value="University">University</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="error-message">Please select your class/grade</div>
+                    <div class="success-message">Grade selected!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">
+                        Phone Number
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+91 98765 43210"
+                        required
+                        pattern="[0-9\s\+\-\(\)\.]+"
+                        minlength="10"
+                        maxlength="20"
+                        data-field="Phone Number"
+                    >
+                    <div class="error-message">Please enter a valid phone number (10+ digits)</div>
+                    <div class="success-message">Phone number is valid!</div>
+                </div>
+
+                <button type="submit">Register for Early Access</button>
+
+                <div class="privacy-note">
+                    By registering, you agree to our <a href="#privacy">Privacy Policy</a> and <a href="#terms">Terms of Service</a>. We'll send you updates about our upcoming workshops.
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Robotics & Science Labs. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Form validation and styling
+        const form = document.querySelector('form[name="robotics-labs-registration"]');
+        const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], select');
+
+        // Real-time validation
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => {
+                if (input.classList.contains('error')) {
+                    validateField(input);
+                }
+            });
+        });
+
+        function validateField(field) {
+            const formGroup = field.parentElement;
+            const fieldName = field.dataset.field || field.name;
+
+            let isValid = true;
+            let errorMessage = '';
+
+            if (!field.value.trim()) {
+                isValid = false;
+                errorMessage = `${fieldName} is required`;
+            } else if (field.type === 'email') {
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                isValid = emailRegex.test(field.value);
+                errorMessage = 'Please enter a valid email address';
+            } else if (field.type === 'tel') {
+                // Phone validation (at least 10 digits)
+                const phoneDigits = field.value.replace(/\D/g, '');
+                isValid = phoneDigits.length >= 10;
+                errorMessage = 'Please enter a valid phone number (10+ digits)';
+            } else if (field.id === 'fullName') {
+                // Name validation
+                const nameRegex = /^[A-Za-z\s]+$/;
+                isValid = nameRegex.test(field.value) && field.value.length >= 2;
+                errorMessage = 'Please enter a valid name (letters and spaces only)';
+            } else if (field.name === 'grade') {
+                // Grade validation
+                isValid = field.value !== '';
+                errorMessage = 'Please select your class/grade';
+            }
+
+            if (isValid) {
+                formGroup.classList.remove('error');
+                formGroup.classList.add('success');
+            } else {
+                formGroup.classList.remove('success');
+                formGroup.classList.add('error');
+                const errorEl = formGroup.querySelector('.error-message');
+                if (errorEl) {
+                    errorEl.textContent = errorMessage;
+                }
+            }
+
+            return isValid;
+        }
+
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            // Allow Netlify to handle the form submission naturally
+            let allValid = true;
+
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    allValid = false;
+                }
+            });
+
+            if (!allValid) {
+                e.preventDefault();
+                // Show first invalid field
+                const firstInvalid = form.querySelector('.form-group.error');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstInvalid.querySelector('input, select').focus();
+                }
+            }
+        });
+
+        // Prevent form submission if reCAPTCHA is not verified
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+            // The actual reCAPTCHA verification will be handled by Netlify
+            submitButton.addEventListener('click', (e) => {
+                if (!submitButton.disabled) {
+                    submitButton.classList.add('loading');
+                }
+            });
+        }
+
+        // Smooth scroll on page load if there's a hash
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+# Netlify Configuration File
+# Documentation: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # No build process needed - static site
+  command = ""
+  publish = "."
+  base = "."
+
+# Form submission configuration
+[[forms]]
+  name = "robotics-labs-registration"
+  # Redirect to thank-you page after successful submission
+  successAction = "/thank-you.html"
+
+# Redirect rules for form submission
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/robotics-labs-registration"
+  to = "/thank-you.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/success"
+  to = "/thank-you.html"
+  status = 200
+  force = false
+
+# Custom headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Performance
+    Cache-Control = "public, max-age=3600"
+    
+    # Enable CORS if needed for API calls
+    Access-Control-Allow-Origin = "*"
+
+# Compress assets
+[build.environment]
+  # You can set environment variables here if needed
+  # NODE_VERSION = "16"
+
+# Error page configuration
+[build]
+  error = "404.html"
+
+# Form spam filter (optional - requires paid plan)
+# [[forms]]
+#   name = "robotics-labs-registration"
+#   spam_filter = "akismet"
+
+# Edge Functions (optional - for advanced features)
+# Uncomment to use Edge Functions for form processing
+# [functions]
+#   directory = "netlify/functions"
+#   included_files = ["netlify/functions/**"]
+
+# Analytics settings (optional)
+[context.analytics]
+  command = ""
+  publish = "."
+
+# Preview context settings
+[context.deploy-preview]
+  command = ""
+  publish = "."
+
+# Branch deploy context
+[context.branch-deploy]
+  command = ""
+  publish = "."

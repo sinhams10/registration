@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for registering with Robotics & Science Labs. We'll be in touch soon with details about our upcoming workshops.">
+    <title>Thank You - Robotics & Science Labs</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* Thank you page specific styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 1rem 0.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating science nodes -->
+    <div class="science-nodes">
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+    </div>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-icon">🤖</div>
+        </div>
+        <h1>Robotics & Science Labs</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="success-card">
+                <div class="success-icon">✓</div>
+                <h2>Thank You!</h2>
+                <p>
+                    Your registration has been received. We'll review your details and get back to you soon.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                    We'll keep you updated on our upcoming workshops via email and phone.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Robotics & Science Labs. All rights reserved. <a href="#privacy">Privacy Policy</a> • <a href="#terms">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        window.scrollTo(0, 0);
+    </script>
+</body>
+</html>
