@@ -25,7 +25,7 @@
 }
 
 /* ============================================
-   Background - Space & Science Theme
+   Background - Blueprint Engineering STEM Theme
    ============================================ */
 
 body {
@@ -34,70 +34,79 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 50%, #e0f4ff 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbfc 50%, #f0f7fa 100%);
     min-height: 100vh;
 }
 
-/* Space nebula background */
+/* Subtle cool grey overlay */
 body::before {
     content: '';
     position: fixed;
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 10% 20%, rgba(147, 112, 219, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 90% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 60%),
-        radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        /* Faint cool grey tint */
+        linear-gradient(180deg, rgba(226, 232, 240, 0.1) 0%, transparent 50%, rgba(203, 213, 225, 0.08) 100%);
     top: 0;
     left: 0;
     z-index: 1;
     pointer-events: none;
 }
 
-/* Animated stars field */
+/* Precision blueprint grid pattern - CAD-style */
 body::after {
     content: '';
     position: fixed;
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, rgba(59, 130, 246, 0.8), rgba(59, 130, 246, 0)),
-        radial-gradient(2px 2px at 60px 70px, rgba(16, 185, 129, 0.7), rgba(16, 185, 129, 0)),
-        radial-gradient(1px 1px at 50px 50px, rgba(245, 158, 11, 0.8), rgba(245, 158, 11, 0)),
-        radial-gradient(1px 1px at 130px 80px, rgba(147, 112, 219, 0.6), rgba(147, 112, 219, 0)),
-        radial-gradient(2px 2px at 90px 10px, rgba(59, 130, 246, 0.7), rgba(59, 130, 246, 0));
-    background-repeat: repeat;
-    background-size: 200px 200px;
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 0 0;
-    animation: stars-float 200s linear infinite;
+        /* Primary grid lines - major gridlines (thin and sharp) */
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 99px,
+            rgba(59, 130, 246, 0.09) 99px,
+            rgba(59, 130, 246, 0.09) 100px,
+            transparent 100px,
+            transparent 200px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 99px,
+            rgba(59, 130, 246, 0.09) 99px,
+            rgba(59, 130, 246, 0.09) 100px,
+            transparent 100px,
+            transparent 200px
+        ),
+        /* Finer grid lines - subdivision gridlines */
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 19px,
+            rgba(59, 130, 246, 0.04) 19px,
+            rgba(59, 130, 246, 0.04) 20px,
+            transparent 20px,
+            transparent 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 19px,
+            rgba(59, 130, 246, 0.04) 19px,
+            rgba(59, 130, 246, 0.04) 20px,
+            transparent 20px,
+            transparent 40px
+        );
+    background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
     top: 0;
     left: 0;
     z-index: 1;
     pointer-events: none;
 }
 
-@keyframes stars-float {
-    0% {
-        background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 0 0;
-    }
-    100% {
-        background-position: 200px 0, 240px 60px, 330px 270px, 270px 100px, 200px 0;
-    }
-}
-
-/* Science orbital pattern overlay */
-body {
-    background-image: 
-        /* Orbital paths */
-        radial-gradient(circle at 15% 25%, transparent 2%, rgba(59, 130, 246, 0.02) 2.5%, transparent 10%),
-        radial-gradient(circle at 85% 75%, transparent 1.5%, rgba(16, 185, 129, 0.02) 2%, transparent 8%),
-        /* Subtle grid for tech feel */
-        repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(59, 130, 246, 0.02) 80px, rgba(59, 130, 246, 0.02) 80.5px),
-        repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(59, 130, 246, 0.02) 80px, rgba(59, 130, 246, 0.02) 80.5px);
-}
-
-/* Floating science nodes */
+/* Technical schematic elements - positioned at edges only */
 .science-nodes {
     position: fixed;
     width: 100%;
@@ -108,26 +117,170 @@ body {
     pointer-events: none;
 }
 
+/* Subtle radial glow behind main content area */
+.science-nodes::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse 800px 600px at 50% 40%, rgba(59, 130, 246, 0.06) 0%, transparent 60%);
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Edge-positioned technical elements */
 .node {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: rgba(59, 130, 246, 0.4);
+    width: 5px;
+    height: 5px;
+    background: rgba(59, 130, 246, 0.5);
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-    animation: node-pulse 4s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
 }
 
-.node:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-.node:nth-child(2) { top: 20%; left: 85%; background: rgba(16, 185, 129, 0.4); box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); animation-delay: 0.5s; }
-.node:nth-child(3) { top: 40%; right: 10%; background: rgba(147, 112, 219, 0.3); box-shadow: 0 0 20px rgba(147, 112, 219, 0.15); animation-delay: 1s; }
-.node:nth-child(4) { bottom: 30%; left: 20%; background: rgba(245, 158, 11, 0.35); box-shadow: 0 0 20px rgba(245, 158, 11, 0.18); animation-delay: 1.5s; }
-.node:nth-child(5) { bottom: 15%; right: 15%; background: rgba(59, 130, 246, 0.35); box-shadow: 0 0 20px rgba(59, 130, 246, 0.18); animation-delay: 2s; }
-
-@keyframes node-pulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.3); }
+/* Corner measurement markers and coordinate ticks */
+.node::before {
+    content: '';
+    position: absolute;
+    background: rgba(59, 130, 246, 0.2);
 }
+
+.node:nth-child(1) { 
+    /* Top-left corner: coordinate axis marker */
+    top: 3%;
+    left: 2%;
+    width: 40px;
+    height: 40px;
+    background: none;
+    box-shadow: none;
+}
+
+.node:nth-child(1)::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: rgba(59, 130, 246, 0.25);
+    top: 20px;
+    left: 0;
+}
+
+.node:nth-child(2) { 
+    /* Top-left corner: vertical axis tick */
+    top: 2%;
+    left: 1%;
+    width: 25px;
+    height: 25px;
+    background: none;
+    box-shadow: none;
+}
+
+.node:nth-child(2)::before {
+    content: '';
+    width: 1px;
+    height: 20px;
+    background: rgba(59, 130, 246, 0.25);
+    top: 0;
+    left: 12px;
+}
+
+.node:nth-child(3) { 
+    /* Bottom-right: circuit schematic corner */
+    bottom: 3%;
+    right: 2%;
+    width: 50px;
+    height: 50px;
+    background: none;
+    box-shadow: none;
+}
+
+.node:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 1px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(59, 130, 246, 0.3) 0px,
+        rgba(59, 130, 246, 0.3) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    bottom: 15px;
+    right: 0;
+}
+
+.node:nth-child(4) { 
+    /* Top-right: measurement scale marks */
+    top: 4%;
+    right: 3%;
+    width: 6px;
+    height: 6px;
+    background: rgba(59, 130, 246, 0.6);
+    opacity: 0.6;
+}
+
+.node:nth-child(4)::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 1px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(59, 130, 246, 0.2) 0px,
+        rgba(59, 130, 246, 0.2) 3px,
+        transparent 3px,
+        transparent 7px
+    );
+    top: 3px;
+    left: 15px;
+}
+
+.node:nth-child(5) { 
+    /* Bottom-left: reference corner markings */
+    bottom: 2%;
+    left: 1.5%;
+    width: 5px;
+    height: 5px;
+    background: rgba(59, 130, 246, 0.5);
+    opacity: 0.7;
+}
+
+.node:nth-child(5)::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(
+        180deg,
+        rgba(59, 130, 246, 0.3) 0%,
+        rgba(59, 130, 246, 0.1) 100%
+    );
+    left: 2px;
+    top: -30px;
+}
+
+/* Subtle pulsing on corner markers */
+@keyframes precision-pulse {
+    0%, 100% { 
+        opacity: 0.4;
+    }
+    50% { 
+        opacity: 0.7;
+    }
+}
+
+.node {
+    animation: precision-pulse 6s ease-in-out infinite;
+}
+
+.node:nth-child(1) { animation-delay: 0s; }
+.node:nth-child(2) { animation-delay: 1s; }
+.node:nth-child(3) { animation-delay: 2s; }
+.node:nth-child(4) { animation-delay: 2.5s; }
+.node:nth-child(5) { animation-delay: 3s; }
 
 /* ============================================
    Header Styles

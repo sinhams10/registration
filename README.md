@@ -4,9 +4,16 @@ A production-ready early access registration landing page for Robotics & Science
 
 ## Features
 
-✨ **Modern Design**
-- Dark gradient theme with animated background
-- Frosted glass effect (glassmorphism)
+✨ **Blueprint Engineering Aesthetic**
+- Pure white to cool grey gradient base mimicking CAD or engineering blueprint paper
+- Precision dual-layer grid system: 100px major gridlines (9% opacity) + refined 20px subdivision gridlines (4% opacity)
+- Technical schematic elements exclusively at edges: coordinate axes, measurement markings, circuit trace patterns, reference ticks
+- Subtle radial blue glow centered behind main heading for sophisticated depth and focus
+- Pulsing corner accent markers with 6-second animation cycle for lab-like precision
+- Structured, measured aesthetic inspired by professional engineering software and technical drawings
+- Zero soft decorative elements or SaaS-style gradients—pure technical utility
+- Abundant clean whitespace in center for forms and content (technical elements confined to edges only)
+- Accessible, structured design for engineering-minded students
 - Responsive layout for all devices
 - Accessibility-first approach
 
@@ -37,13 +44,38 @@ A production-ready early access registration landing page for Robotics & Science
 - Optimized animations with GPU acceleration
 - Production-ready code
 
+## Design Philosophy
+
+The design language is carefully crafted for engineering-focused high school students (10th grade and above):
+
+- **Blueprint Engineering Inspiration**: Professional CAD/blueprint aesthetic inspired by engineering software (AutoCAD, SolidWorks), technical drawings, and laboratory workbenches
+- **Precision Over Decoration**: Structured grid system mimicking measurement tools and graph paper—no soft gradients, no rounded decorative elements, no startup-style visual language
+- **Technical Authenticity**: Schematic markers, measurement ticks, and coordinate systems positioned at edges create immediate association with real engineering and technical work
+- **Focused Content Hierarchy**: Technical elements confined exclusively to perimeter—center is pure whitespace for clear form prominence and readability
+- **Subtle Depth**: Soft radial glow behind heading creates professional layering without compromising technical aesthetic or adding softness
+- **Refined Motion**: Minimal pulsing on corner markers (6-second cycle) provides gentle life without distraction—precise timing matching lab equipment aesthetics
+- **Lab-Approved Palette**: Cool engineering blue (#3B82F6) with white and light grey—colors of technical drawings, engineering blueprints, and measurement instruments
+- **Accessible Precision**: Full keyboard navigation, high contrast ratio, structured semantic HTML—designed for serious, focused students with no dilution from playful elements
+- **Aspirational Technical**: Design conveys sophisticated engineering discipline while remaining inviting to students considering STEM careers
+
+The background features:
+- **Base**: Pure white (#FFFFFF) to cool grey (#F8FBFC to #F0F7FA) mimicking blueprint paper
+- **Primary Grid**: 100px major gridlines at 9% opacity blue—clearly visible technical reference
+- **Subdivision Grid**: 20px minor gridlines at 4% opacity—fine measurement reference
+- **Edge Elements**: Coordinate axes, measurement scales, circuit traces positioned at corners only
+- **Central Radial Glow**: Soft blue radial gradient (6% max opacity) centered behind heading
+- **Animation**: Subtle 6-second precision-pulse on corner markers (opacity 0.4→0.7)
+- **Zero Motion**: Grid and glows are static—only corner markers include gentle pulsing
+- **Clean Center**: 80%+ of visible content area has no technical overlays—pure whitespace
+
 ## Project Structure
 
 ```
 registration/
 ├── index.html          # Main landing page with registration form
 ├── thank-you.html      # Thank you page after successful submission
-└── README.md          # This file
+├── shared.css          # Centralized stylesheet for both pages
+└── README.md           # This file
 ```
 
 ## File Descriptions
@@ -65,10 +97,19 @@ registration/
 ### thank-you.html
 **Post-submission confirmation page**
 - Success confirmation message
-- Timeline of what happens next
-- Call-to-action buttons
-- Contact information
 - Matching visual theme with celebration animation
+- Minimal, clean design focused on essential information
+- Links back to main page
+
+### shared.css
+**Centralized stylesheet for consistent design**
+- All common styles for forms, buttons, headers, footers
+- Modern tech + STEM background with circuit patterns and blue accents
+- CSS custom properties (variables) for easy color customization
+- Responsive design rules and media queries
+- Accessibility features and reduced motion support
+- Floating accent nodes with gentle glow animations
+- Single source of truth for design—update once, applies to both pages
 
 ## Deployment Instructions
 
@@ -162,14 +203,73 @@ Netlify stores form submissions at:
 
 ### Change Color Theme
 
-Edit CSS variables in the `<style>` section:
+Edit CSS variables in `shared.css`:
 ```css
 :root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --accent-color: #00d4ff;
-    --success-color: #00ff88;
-    --error-color: #ff3366;
+    --primary-color: #1e3a8a;        /* Main blue */
+    --primary-light: #3b82f6;        /* Light blue */
+    --secondary-color: #059669;      /* Emerald green */
+    --accent-color: #f59e0b;         /* Amber */
+    --success-color: #10b981;        /* Success green */
+    --error-color: #ef4444;          /* Error red */
 }
+```
+
+### Customize Background
+
+Edit the background styles in `shared.css` under "Background - Blueprint Engineering STEM Theme" section:
+
+**Adjust major grid line opacity:**
+```css
+/* In body::after section, adjust primary grid visibility */
+rgba(59, 130, 246, 0.09)  /* Change opacity on 100px major gridlines */
+/* Range: 0.06-0.14 (lower = more subtle, higher = more prominent) */
+```
+
+**Adjust subdivision grid opacity:**
+```css
+/* Fine grid lines used for measurement reference */
+rgba(59, 130, 246, 0.04)  /* Change opacity on 20px minor gridlines */
+/* Range: 0.02-0.08 (keep subtle for secondary grid) */
+```
+
+**Modify radial glow intensity:**
+```css
+/* In .science-nodes::before, adjust central glow behind heading */
+radial-gradient(ellipse 800px 600px at 50% 40%, rgba(59, 130, 246, 0.06) 0%, ...
+/* Change 0.06 to higher (0.08-0.12) for more glow, lower (0.02-0.04) for subtler effect */
+```
+
+**Adjust corner marker animation speed:**
+```css
+/* In @keyframes precision-pulse, modify timing */
+@keyframes precision-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+.node {
+    animation: precision-pulse 6s ease-in-out infinite;  /* Change 6s for faster/slower pulse */
+}
+/* Recommended range: 4s-10s (technical precision feel) */
+```
+
+**Adjust marker line visibility:**
+```css
+/* Corner measurement marks and circuit traces */
+rgba(59, 130, 246, 0.25)  /* Change opacity of coordinate lines and traces */
+rgba(59, 130, 246, 0.2)   /* Change opacity of measurement scale marks */
+/* Range: 0.15-0.35 for visibility without dominance */
+```
+
+**Change accent color from blue to another cool engineering tone:**
+```css
+/* Replace #3B82F6 (engineering blue) with:
+   - #0284C7 (darker technical blue) - for deeper technical feel
+   - #06B6D4 (cyan) - for precision instrument look
+   - #7C3AED (indigo) - for sophisticated lab aesthetic
+   - #6366F1 (indigo-blue) - for modern engineering feel
+*/
 ```
 
 ### Modify Form Fields
