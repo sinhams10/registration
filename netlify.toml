@@ -47,38 +47,3 @@
     
     # Enable CORS if needed for API calls
     Access-Control-Allow-Origin = "*"
-
-# Compress assets
-[build.environment]
-  # You can set environment variables here if needed
-  # NODE_VERSION = "16"
-
-# Error page configuration
-[build]
-  error = "404.html"
-
-# Form spam filter (optional - requires paid plan)
-# [[forms]]
-#   name = "robotics-labs-registration"
-#   spam_filter = "akismet"
-
-# Edge Functions (optional - for advanced features)
-# Uncomment to use Edge Functions for form processing
-# [functions]
-#   directory = "netlify/functions"
-#   included_files = ["netlify/functions/**"]
-
-# Analytics settings (optional)
-[context.analytics]
-  command = ""
-  publish = "."
-
-# Preview context settings
-[context.deploy-preview]
-  command = ""
-  publish = "."
-
-# Branch deploy context
-[context.branch-deploy]
-  command = ""
-  publish = "."
