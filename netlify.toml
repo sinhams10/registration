@@ -7,22 +7,10 @@
   publish = "."
   base = "."
 
-# Form submission configuration
-[[forms]]
-  name = "robotics-labs-registration"
-  # Redirect to thank-you page after successful submission
-  successAction = "/thank-you.html"
-
-# Redirect rules for form submission
+# Redirect rules
 [[redirects]]
   from = "/"
   to = "/index.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/robotics-labs-registration"
-  to = "/thank-you.html"
   status = 200
   force = false
 
